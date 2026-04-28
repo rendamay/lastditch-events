@@ -278,16 +278,7 @@
       }
 
       document.getElementById('app').innerHTML = html;
-      sendHeight();
     }
-
-    function sendHeight() {
-      window.parent.postMessage({ type: 'resize', height: document.body.scrollHeight }, '*');
-    }
-
-    const ro = new ResizeObserver(sendHeight);
-    ro.observe(document.body);
-    sendHeight();
 
     async function init() {
       try {
@@ -304,5 +295,6 @@
 
     document.addEventListener('DOMContentLoaded', init);
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.9/iframeResizer.contentWindow.min.js"></script>
 </body>
 </html>
