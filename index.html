@@ -275,7 +275,9 @@
       }
 
       document.getElementById('app').innerHTML = html;
-      sendHeight();
+      document.fonts.ready.then(sendHeight);
+      setTimeout(sendHeight, 500);
+      setTimeout(sendHeight, 1500);
     }
 
     function sendHeight() {
