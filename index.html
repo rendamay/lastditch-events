@@ -278,21 +278,14 @@
       }
 
       document.getElementById('app').innerHTML = html;
-      document.fonts.ready.then(sendHeight);
-      setTimeout(sendHeight, 500);
-      setTimeout(sendHeight, 1500);
     }
 
     function sendHeight() {
       window.parent.postMessage({ type: 'resize', height: document.body.scrollHeight }, '*');
     }
 
-    function debounce(fn, ms) {
-      let t;
-      return function () { clearTimeout(t); t = setTimeout(fn, ms); };
-    }
-
-    window.addEventListener('resize', debounce(sendHeight, 100));
+    const ro = new ResizeObserver(sendHeight);
+    ro.observe(document.body);
 
     async function init() {
       try {
