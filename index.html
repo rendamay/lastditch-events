@@ -278,6 +278,7 @@
       }
 
       document.getElementById('app').innerHTML = html;
+      sendHeight();
     }
 
     function sendHeight() {
@@ -286,6 +287,7 @@
 
     const ro = new ResizeObserver(sendHeight);
     ro.observe(document.body);
+    sendHeight();
 
     async function init() {
       try {
